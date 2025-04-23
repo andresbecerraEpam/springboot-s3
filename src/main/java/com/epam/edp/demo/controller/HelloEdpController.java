@@ -39,16 +39,18 @@ public class HelloEdpController {
     }
 
     @GetMapping(value = "/")
-    public String getContentFromS3() {
+    public Map<String, String> getContentFromS3() {
     GetObjectRequest request = GetObjectRequest.builder()
             .bucket(bucketName)
             .key(objectKey)
             .build();
 
     try (ResponseInputStream<GetObjectResponse> s3Object = s3Client.getObject(request)) {
-        return new BufferedReader(new InputStreamReader(s3Object))
+        String content = new BufferedReader(new InputStreamReader(s3Object))
                 .lines()
                 .collect(Collectors.joining("\n"));
+
+                return Collections.singletonMap("content", content);
     } catch (IOException e) {
         throw new RuntimeException("Failed to read content from S3", e);
     }
