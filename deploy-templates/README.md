@@ -1,6 +1,9 @@
 # springboot-s3
 
-![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.1.0](https://img.shields.io/badge/AppVersion-0.1.0-informational?style=flat-square)
+
+
+
+![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.1.0](https://img.shields.io/badge/AppVersion-0.1.0-informational?style=flat-square) 
 
 A Helm chart for Kubernetes
 
@@ -15,6 +18,8 @@ A Helm chart for Kubernetes
 ## Source Code
 
 * <https://github.com/KubeRocketCI/template-springboot.git>
+
+
 
 ## Values
 
@@ -33,7 +38,7 @@ A Helm chart for Kubernetes
 | ingress.annotations | object | `{}` |  |
 | ingress.className | string | `""` |  |
 | ingress.dnsWildcard | string | `"development.krci-dev.cloudmentor.academy"` |  |
-| ingress.enabled | bool | `false` |  |
+| ingress.enabled | bool | `true` |  |
 | ingress.hosts[0].host | string | `"edpDefault"` |  |
 | ingress.hosts[0].paths[0].path | string | `"/"` |  |
 | ingress.hosts[0].paths[0].pathType | string | `"ImplementationSpecific"` |  |
@@ -51,10 +56,8 @@ A Helm chart for Kubernetes
 | securityContext | object | `{}` |  |
 | service.port | int | `8080` |  |
 | service.type | string | `"ClusterIP"` |  |
-| serviceAccount.annotations | object | `{}` | Annotations to add to the service account |
-| serviceAccount.automount | bool | `true` | Automatically mount a ServiceAccount's API credentials? |
+| serviceAccount.annotations | object | `{"eks.amazonaws.com/role-arn":"arn:aws:iam::183631338639:role/krci-cmtr-8673ceff-assume-role"}` | Annotations to add to the service account |
 | serviceAccount.create | bool | `true` | Specifies whether a service account should be created |
-| serviceAccount.name | string | `""` | The name of the service account to use. If not set and create is true, a name is generated using the fullname template |
 | tolerations | list | `[]` | https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/ |
 | volumeMounts | list | `[]` |  |
 | volumes | list | `[]` |  |
