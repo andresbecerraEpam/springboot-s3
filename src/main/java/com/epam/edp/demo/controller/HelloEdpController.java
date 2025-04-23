@@ -46,9 +46,11 @@ public class HelloEdpController {
             .build();
 
     try (ResponseInputStream<GetObjectResponse> s3Object = s3Client.getObject(request)) {
-        return new BufferedReader(new InputStreamReader(s3Object))
+        String content = new BufferedReader(new InputStreamReader(s3Object))
                 .lines()
                 .collect(Collectors.joining("\n"));
+
+                return Collections.singletonMap("content", content);
     } catch (IOException e) {
         throw new RuntimeException("Failed to read content from S3", e);
     }
