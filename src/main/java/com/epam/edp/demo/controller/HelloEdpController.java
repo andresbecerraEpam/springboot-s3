@@ -39,14 +39,14 @@ public class HelloEdpController {
     }
 
     @GetMapping(value = "/")
-    public String getContentFromS3() {
+    public Map<String, String> getContentFromS3() {
     GetObjectRequest request = GetObjectRequest.builder()
             .bucket(bucketName)
             .key(objectKey)
             .build();
 
     try (ResponseInputStream<GetObjectResponse> s3Object = s3Client.getObject(request)) {
-        String content = new BufferedReader(new InputStreamReader(s3Object))
+        String conxtent = new BufferedReader(new InputStreamReader(s3Object))
                 .lines()
                 .collect(Collectors.joining("\n"));
 
