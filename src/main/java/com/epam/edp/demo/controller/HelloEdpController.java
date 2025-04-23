@@ -46,7 +46,7 @@ public class HelloEdpController {
             .build();
 
     try (ResponseInputStream<GetObjectResponse> s3Object = s3Client.getObject(request)) {
-        String conxtent = new BufferedReader(new InputStreamReader(s3Object))
+        String content = new BufferedReader(new InputStreamReader(s3Object))
                 .lines()
                 .collect(Collectors.joining("\n"));
 
