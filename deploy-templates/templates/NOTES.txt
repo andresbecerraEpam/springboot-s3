@@ -1,0 +1,1 @@
+1. Application springboot-s3 has been successfully deployed!!
